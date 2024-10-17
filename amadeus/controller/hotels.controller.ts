@@ -4,7 +4,6 @@ import {convertToIata} from "../utils/getIataCode";
 
 export const getHotelsByCity = async (req, res) => {
     const { cityCode } = req.params;
-    console.log(cityCode)
     try {
         const accessToken = await getAccessToken(); // Get the access token
         const actualCityCode = await convertToIata(cityCode);
@@ -68,7 +67,7 @@ export const getMultiHotelOffer = async (req, res) => {
         return res.status(200).json(response.data);
     } catch (error) {
         console.error('Error fetching hotels:', error.response?.data || error.message);
-        return res.status(500).json({ error: error.response?.data?.errors || 'Failed to fetch hotels' });
+        return res.status(500).json({ error: error.response?.data?.errors[0]?.title || 'Failed to fetch hotels' });
     }
 }
 
