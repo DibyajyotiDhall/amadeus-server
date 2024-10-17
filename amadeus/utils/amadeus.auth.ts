@@ -17,7 +17,7 @@ export const getAccessToken = async () => {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
         });
-        console.log("getAccessToken response", response.data.access_token)
+        // console.log("getAccessToken response", response.data.access_token)
         return response.data.access_token; // Return the access token
     } catch (error) {
         console.error('Error fetching access token:', error.response?.data || error.message);

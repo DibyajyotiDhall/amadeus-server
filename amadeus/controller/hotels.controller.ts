@@ -1,14 +1,17 @@
 import axios from 'axios';
 import { getAccessToken } from '../utils/amadeus.auth';
+import {convertToIata} from "../utils/getIataCode";
 
 export const getHotelsByCity = async (req, res) => {
     const { cityCode } = req.params;
+    console.log(cityCode)
     try {
         const accessToken = await getAccessToken(); // Get the access token
+        const actualCityCode = await convertToIata(cityCode);
 
         // Make the GET request to fetch hotels by city
         const response = await axios.get(
-            `https://test.api.amadeus.com/v1/reference-data/locations/hotels/by-city?cityCode=${cityCode}&radius=5&radiusUnit=KM&hotelSource=ALL`,
+            `https://test.api.amadeus.com/v1/reference-data/locations/hotels/by-city?cityCode=${actualCityCode}&radius=5&radiusUnit=KM&hotelSource=ALL`,
             {
                 headers: {
                     Authorization: `Bearer ${accessToken}`, // Add access token to Authorization header
@@ -16,7 +19,6 @@ export const getHotelsByCity = async (req, res) => {
             }
         );
 
-        // console.log('Hotels data:', response.data); // Log the hotel data
         return res.status(200).json(response.data);
     } catch (error) {
         console.error('Error fetching hotels:', error.response?.data || error.message);
@@ -62,8 +64,6 @@ export const getMultiHotelOffer = async (req, res) => {
                 },
             }
         );
-
-        console.log("response: ", response.data);
 
         return res.status(200).json(response.data);
     } catch (error) {
