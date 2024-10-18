@@ -9,10 +9,11 @@ import pmsRoutes from "../pms_api/src/api";
 import authRouter from "../authentication/src/routes/auth.route";
 import userRouter from "../authentication/src/routes/user.route";
 import bookingRouter from "../booking_engine/src/routes/booking.routes";
-import paymentRouter from "../payment/src/routes/payment.route";
+// import paymentRouter from "../payment/src/routes/payment.route";
 import searchRouter from "../search-engine/src/routes/search";
 import amadeusRouter from "../amadeus/routes/hotels.routes";
 // import { getHotelsByCity } from "../amadeus/index";
+import paymentRouter from "../amadeus/routes/payment.routes";
 
 export async function initializeExpressRoutes({ app }: { app: Express }) {
   app.head("/status", (req: Request, res: Response) => {
@@ -24,7 +25,7 @@ export async function initializeExpressRoutes({ app }: { app: Express }) {
   app.use("/api/v1/pms", pmsRoutes());
   app.use("/api/v1/price", priceRouter);
   app.use("/api/v1/booking", bookingRouter);
-  //   app.use("/api/v1/payment", paymentRouter);
+  app.use("/api/v1/payment", paymentRouter);
   app.use("/api/v1/search", searchRouter);
   app.use("/api/v1/amadeus", amadeusRouter)
 
