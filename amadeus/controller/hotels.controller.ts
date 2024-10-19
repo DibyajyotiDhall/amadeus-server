@@ -10,7 +10,7 @@ export const getHotelsByCity = async (req, res) => {
 
         // Make the GET request to fetch hotels by city
         const response = await axios.get(
-            `https://test.api.amadeus.com/v1/reference-data/locations/hotels/by-city?cityCode=${actualCityCode}&radius=5&radiusUnit=KM&hotelSource=ALL`,
+            `https://api.amadeus.com/v1/reference-data/locations/hotels/by-city?cityCode=${actualCityCode}&radius=5&radiusUnit=KM&hotelSource=ALL`,
             {
                 headers: {
                     Authorization: `Bearer ${accessToken}`, // Add access token to Authorization header
@@ -32,7 +32,7 @@ export const getHotelById = async (req, res) => {
 
         // Make the GET request to fetch hotels by ID
         const response = await axios.get(
-            `https://test.api.amadeus.com/v1/reference-data/locations/hotels/by-hotels?hotelIds=${id}`,
+            `https://api.amadeus.com/v1/reference-data/locations/hotels/by-hotels?hotelIds=${id}`,
             {
                 headers: {
                     Authorization: `Bearer ${accessToken}`, // Add access token to Authorization header
@@ -56,7 +56,7 @@ export const getMultiHotelOffer = async (req, res) => {
 
         // Make the GET request to fetch hotels offer
         const response = await axios.get(
-            `https://test.api.amadeus.com/v3/shopping/hotel-offers?hotelIds=${hotelId}&adults=${adults}&checkInDate=${checkIn}&roomQuantity=1&paymentPolicy=NONE&bestRateOnly=true`,
+            `https://api.amadeus.com/v3/shopping/hotel-offers?hotelIds=${hotelId}&adults=${adults}&checkInDate=${checkIn}&roomQuantity=1&paymentPolicy=NONE&bestRateOnly=true`,
             {
                 headers: {
                     Authorization: `Bearer ${accessToken}`, // Add access token to Authorization header
@@ -79,7 +79,7 @@ export const createHotelOrder = async (req, res) => {
 
         // Make the POST request to create hotel order
         const response = await axios.post(
-            'https://test.api.amadeus.com/v2/booking/hotel-orders',
+            'https://api.amadeus.com/v2/booking/hotel-orders',
             data,
             {
                 headers: {

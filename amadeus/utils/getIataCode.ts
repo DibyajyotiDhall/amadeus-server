@@ -5,6 +5,7 @@ import Amadeus from 'amadeus';
 const amadeus = new Amadeus({
     clientId: process.env.AMADEUS_API_KEY,
     clientSecret: process.env.AMADEUS_API_SECRET,
+    host: 'api.amadeus.com', 
 });
 
 export const convertToIata = async (location: string) => {
@@ -18,6 +19,7 @@ export const convertToIata = async (location: string) => {
         return response.data[0]?.iataCode || null;
 
     } catch (error) {
+        console.error("Amadeus API Error: ", error);
         return null
     }
 }

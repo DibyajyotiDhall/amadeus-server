@@ -8,22 +8,22 @@ import { initializeExpressRoutes } from "./common/express";
 // import elasticClient from "./service/elastic_search";
 // import exressLoader from "../server/pms_api/src/loaders/express"
 
-async function checkElasticClient() {
-  try {
-    // Check if Elasticsearch is reachable
-    // console.log("connecting to elastic search")
-    const health = await elasticClient().cluster.health();
-    console.log(
-      `Elasticsearch connection successful clusterHealth: ${health?.status}`
-    );
-  } catch (error: any) {
-    // res.status(500).json({ message: 'Error connecting to Elasticsearch', error: error.message });
-    console.log({
-      message: "Error connecting to Elasticsearch",
-      error: error.message,
-    });
-  }
-}
+// async function checkElasticClient() {
+//   try {
+//     // Check if Elasticsearch is reachable
+//     // console.log("connecting to elastic search")
+//     const health = await elasticClient().cluster.health();
+//     console.log(
+//       `Elasticsearch connection successful clusterHealth: ${health?.status}`
+//     );
+//   } catch (error: any) {
+//     // res.status(500).json({ message: 'Error connecting to Elasticsearch', error: error.message });
+//     console.log({
+//       message: "Error connecting to Elasticsearch",
+//       error: error.message,
+//     });
+//   }
+// }
 
 initializeExpressRoutes({ app }).then(async () => {
   try {
@@ -39,28 +39,28 @@ initializeExpressRoutes({ app }).then(async () => {
 
     // call these functions only when database connection successful
     // console.log("Checking elastic health status");
-    checkElasticClient();
+    // checkElasticClient();
     // console.log("Checking elastic health status completed");
-    createPropertyIndexAndDoc();
+    // createPropertyIndexAndDoc();
     // console.log("Property indexing is done")
   } catch (err) {
     console.log(`Error: ${err}`);
   }
 });
 
-(async () => {
-  const changeStream = Room.watch();
-  changeStream.on("change", (next) => {
-    console.log(">>>>>>>>>>>>>>>>>>>>>>>>", "change");
+// (async () => {
+//   const changeStream = Room.watch();
+//   changeStream.on("change", (next) => {
+//     console.log(">>>>>>>>>>>>>>>>>>>>>>>>", "change");
 
-    createPropertyIndexAndDoc();
-    // close();
-  });
+//     createPropertyIndexAndDoc();
+//     // close();
+//   });
 
-  async function close() {
-    await changeStream.close();
-  }
-})();
+//   async function close() {
+//     await changeStream.close();
+//   }
+// })();
 
 // export const connectDB = async () => {
 //     console.log("port",config.port)
