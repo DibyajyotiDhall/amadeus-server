@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(cors({
-    origin: "http://localhost:3004",
+    origin: `${process.env.CORS_ORIGIN}`,
 }))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
