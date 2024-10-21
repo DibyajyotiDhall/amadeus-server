@@ -7,6 +7,10 @@
             "use": "@vercel/node"
         },
         {
+            "src": "{authentication,booking_engine,common,payment,pms_api,search_engine,user}/**/*",
+            "use": "@vercel/node"
+        },
+        {
             "src": "src/**/*",
             "use": "@vercel/static"
         }
