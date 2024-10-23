@@ -19,12 +19,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@clerk/clerk-sdk-node": "^5.0.53",
     "@elastic/elasticsearch": "^8.14.0",
     "amadeus": "^11.0.0",
     "babel": "^6.23.0",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.2.0",
     "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "joi": "^17.13.3",
@@ -34,6 +36,7 @@
     "multer": "^1.4.5-lts.1",
     "razorpay": "^2.9.4",
     "stripe": "^17.2.0",
+    "svix": "^1.37.0",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
