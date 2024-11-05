@@ -5,7 +5,7 @@ export const fetchClientCredentials = async (): Promise<string | null> => {
     console.log("***********************\n", process.env.AMADEUS_API_KEY, process.env.AMADEUS_API_SECRET)
     try {
         const response = await axios.post(
-            "https://test.api.amadeus.com/v1/security/oauth2/token",
+            "https://api.amadeus.com/v1/security/oauth2/token",
             {
                 client_id: process.env.AMADEUS_API_KEY,
                 client_secret: process.env.AMADEUS_API_SECRET,

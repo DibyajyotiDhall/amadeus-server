@@ -5,6 +5,7 @@ import { fetchClientCredentials } from "../lib/amadeus";
 import { razorpay } from "../lib/razorpay"; // Ensure you have Razorpay setup in this file
 import Order from "../models/order.model"; // Adjust according to your model path
 import { isAxiosError } from "axios";
+import { getAccessToken } from "../../amadeus/utils/amadeus.auth";
 
 export async function createFlightOrder(req: Request, res: Response) {
     const { flightOffers, travelers, amount } = req.body;
@@ -16,7 +17,8 @@ export async function createFlightOrder(req: Request, res: Response) {
         });
     }
 
-    const token = await fetchClientCredentials();
+    const token = await getAccessToken();
+    console.log("Token", token);
 
     try {
         const orderRes = await axios.post(
@@ -36,6 +38,7 @@ export async function createFlightOrder(req: Request, res: Response) {
             }
         );
 
+        console.log("orderRes", orderRes.data);
         // Setting up options for Razorpay order.
         const options = {
             amount: amount, // Ensure amount is passed correctly

@@ -3,7 +3,7 @@ import { capturePayment, createFlightOrder } from "../controllers/order.controll
 
 const router = Router();
 
-router.post("/order", createFlightOrder);
+router.post("/create", createFlightOrder);
 router.post("/paymentCapture", capturePayment);
 
 
