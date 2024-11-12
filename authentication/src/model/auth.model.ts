@@ -1,6 +1,5 @@
 import mongoose, { HydratedDocument, Model, QueryWithHelpers, Schema, Types } from "mongoose";
 import { createHash } from "../utils/bcryptHelper";
-import { ServiceCost } from "../../../price_pref/model/price.model";
 
 export interface AuthType {
   firstName: string;
@@ -8,7 +7,7 @@ export interface AuthType {
   email: string;
   password: string;
   role: string;
-  rate_plan: Types.ObjectId | ServiceCost;
+  rate_plan: Types.ObjectId;
   bookings: Types.ObjectId;
 }
 

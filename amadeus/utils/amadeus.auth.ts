@@ -12,7 +12,7 @@ export const getAccessToken = async () => {
             client_secret: process.env.AMADEUS_API_SECRET,
         });
 
-        const response = await axios.post('https://api.amadeus.com/v1/security/oauth2/token', data, {
+        const response = await axios.post(`${process.env.AMADEUS_API_URL}/v1/security/oauth2/token`, data, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },

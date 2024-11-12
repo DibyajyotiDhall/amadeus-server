@@ -5,10 +5,10 @@ export const fetchClientCredentials = async (): Promise<string | null> => {
     console.log("***********************\n", process.env.AMADEUS_API_KEY, process.env.AMADEUS_API_SECRET)
     try {
         const response = await axios.post(
-            "https://api.amadeus.com/v1/security/oauth2/token",
+            `${process.env.TEST_AMADEUS_API_URL}/v1/security/oauth2/token`,
             {
-                client_id: process.env.AMADEUS_API_KEY,
-                client_secret: process.env.AMADEUS_API_SECRET,
+                client_id: process.env.TEST_AMADEUS_API_KEY,
+                client_secret: process.env.TEST_AMADEUS_API_SECRET,
                 grant_type: "client_credentials",
             },
             {
