@@ -55,7 +55,7 @@ export const getFlightOffers = async (req: Request, res: Response) => {
                     travelClass: travelClass || "ECONOMY",
                     nonStop,
                     includedAirlineCodes: includedAirlineCodes || "",
-                    max: 5,
+                    max: 15,
                 }),
                 headers: { Authorization: `Bearer ${token}` },
             }
