@@ -21,8 +21,8 @@ export const getFlightOffers = async (req: Request, res: Response) => {
         return res.status(400).json({ success: false, message: "Missing required query parameters" });
     }
 
-    const token = await fetchClientCredentials();
-    // const token = await getAccessToken();
+    // const token = await fetchClientCredentials();
+    const token = await getAccessToken();
 
     const departureDateIST = new Date(departureDate as string).toLocaleString(
         "en-US",
@@ -42,7 +42,7 @@ export const getFlightOffers = async (req: Request, res: Response) => {
 
     try {
         const response = await axios.get(
-            `${process.env.TEST_AMADEUS_API_URL}/v2/shopping/flight-offers`,
+            `${process.env.AMADEUS_API_URL}/v2/shopping/flight-offers`,
             {
                 params: filterObject({
                     currencyCode: "INR",
