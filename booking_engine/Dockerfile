@@ -7,6 +7,6 @@ COPY server/booking_engine/package.json ./
 RUN yarn global add nodemon ts-node
 RUN yarn
 
-COPY . .
+COPY ....
 
 CMD ["yarn", "dev"]
